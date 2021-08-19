@@ -3,7 +3,9 @@ import os
 
 def get_results_by_machine_read():
     results = ""
-    for fil in os.listdir('Source/'):
+    file_names = os.listdir('Source/')
+    file_names.sort()
+    for fil in file_names:
         with open ('Source/' + fil) as f:
             line_number = 0
             for line in f:
