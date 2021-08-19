@@ -1,7 +1,8 @@
 import re
 import os
 
-def print_circumflex_under():
+def get_results_with_circumflex():
+    results = ""
     for fil in os.listdir('Source/'):
         with open ('Source/' + fil) as f:
             line_number = 0
@@ -12,5 +13,7 @@ def print_circumflex_under():
                 matchers = pattern.finditer(line)
                 for match in matchers:
                     file_name = fil
-                    start_of_string = match.start()+len(file_name)-1
-                    print(file_name, line, line_number,'\n',' '*start_of_string,'^')
+                    start_of_string = match.start()+len(file_name)
+                    result = "{} {} {}{}{}{}\n".format(file_name, line, line_number,'\n',' '*start_of_string,'^')
+                    results += result
+    return results
