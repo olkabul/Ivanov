@@ -1,9 +1,8 @@
-FROM python:3.8 
+FROM python:3.8-alpine
+RUN apk update
+RUN apk add bash
+RUN apk add git
+RUN apk add python3-dev
+RUN ln -s /usr/bin/python3 /usr/bin/python
 WORKDIR /dire
-COPY . /dire/
-ADD basic.py .
-ADD main.py .
-ADD circumflex.py .
-ADD machine_read.py .
-RUN pip install requests beautifulsoup4
-CMD ["python", "./main.py", "-m"]
+RUN git clone https://github.com/olkabul/Ivanov.git
